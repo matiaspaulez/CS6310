@@ -17,7 +17,6 @@ class LoginController {
         else if(params.successReg){
             [register: true]
         }
-
     }
 
 
