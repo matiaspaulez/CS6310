@@ -2,10 +2,14 @@ package sca
 
 class Semester {
 
-    String id
+    int id
     String name
     String startDate
     String endDate
+
+    def Semester(id){
+        this.id = id
+    }
 
     static constraints = {
     }

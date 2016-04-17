@@ -1,7 +1,8 @@
 package utils;
 
-import core.Course;
+//import core.Course;
 import core.ScheduledCourse;
+import sca.Course;
 
 public final class KTS
 {

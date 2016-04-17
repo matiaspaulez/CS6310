@@ -6,8 +6,8 @@ class RegisterController {
         [provId: params.provId]
     }
 
-    def register(User userData){
+    def register(Student userData){
         userData.save flush: true
-        redirect(action:"index", controller:"Login", params:[successReg: true])
+        redirect(action:"index", controller:"Login", params:[successReg: true, student: userData])
     }
 }

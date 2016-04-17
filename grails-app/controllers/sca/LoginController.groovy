@@ -11,10 +11,12 @@ class LoginController {
 
     def index() {
 
+
         if(params.error){
             [error: true, errorLabel: "Wrong User Name or Passsword"]
         }
         else if(params.successReg){
+            Student s = params.userData
             [register: true]
         }
     }

@@ -1,6 +1,13 @@
 package core;
 
+import sca.Course;
+import sca.Semester;
+
+
 public class ScheduledCourse
+
+
+
 {
     private Course course;
     private Semester semester;

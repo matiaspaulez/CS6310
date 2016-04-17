@@ -2,10 +2,10 @@ package grb;
 
 import java.util.ArrayList;
 
-import core.Course;
+//import core.Course;
 import core.ScheduledCourse;
-import core.Semester;
-import core.Student;
+//import core.Semester;
+//import core.Student;
 import core.StudentData;
 import gurobi.GRB;
 import gurobi.GRBEnv;
@@ -15,6 +15,9 @@ import gurobi.GRBModel;
 import gurobi.GRBVar;
 import utils.ArgumentParser;
 import utils.KTS;
+import sca.Course;
+import sca.Semester;
+import sca.Student;
 
 public class StudentSchedule
 {
