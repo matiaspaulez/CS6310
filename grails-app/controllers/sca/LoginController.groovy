@@ -11,7 +11,7 @@ class LoginController {
 
     def index() {
 
-
+        log.info "[LOG:] Entering INDEX"
         if(params.error){
             [error: true, errorLabel: "Wrong User Name or Passsword"]
         }
@@ -24,6 +24,13 @@ class LoginController {
 
     def login(User userData){
         def user = User.findByUserName(userData.userName)
+
+        println "[LOG:] Entering login with user id:   2 ${user.getId()}"
+        println "[LOG:] Entering login with user name: ${user.getUserName()}"
+        println "[LOG:] Entering login with first name: ${user.getFirstName()}"
+        println "[LOG:] Entering login with last name: ${user.getLastName()}"
+        println "[LOG:] Entering login with role: ${user.getRole()}"
+        println "[LOG:] Entering login with pass: ${user.getPassword()}"
 
         if(user == null){
             redirect(action: "index", params:[error: true, errorLabel: "Wrong User Name or Password"])

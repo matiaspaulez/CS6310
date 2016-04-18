@@ -71,36 +71,37 @@
 
                         <fieldset>
 
-                            <div class="form-group">
-                                Role:
-                                <select>
-                                    <option>Student</option>
-                                    <option>Professor</option>
-                                    <option>TA</option>
-                                </select>
-                            </div>
+                        <div class="form-group">
+                            Role:
+                            <select name="role" id="role">
+                                <option value="Student">Student</option>
+                                <option value="Administrator">Administrator</option>
+                            </select>
+                        </div>
 
-                            <div class="form-group">
-                                <input class="form-control" placeholder="User name" name="userName" autofocus>
-                            </div>
-                            <div class="form-group">
-                                <input class="form-control" placeholder="Password" name="password" type="password" value="">
-                            </div>
+                        <fieldset>
 
-                            <div class="form-group">
-                                <input class="form-control" placeholder="Confirm Password" name="password" type="password" value="">
-                            </div>
-                            <div class="form-group">
-                                <input class="form-control" placeholder="First Name" name="firstName" autofocus>
-                            </div>
-                            <div class="form-group">
-                                <input class="form-control" placeholder="Last Name" name="lastName" autofocus>
-                            </div>
+                        <div class="form-group">
+                            <input class="form-control" placeholder="User name" name="userName" autofocus>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" placeholder="Password" name="password" type="password" value="">
+                        </div>
 
-                            <g:actionSubmit class="btn btn-lg btn-success btn-block"  value="Register"/>
+                        <div class="form-group">
+                            <input class="form-control" placeholder="Confirm Password" name="password" type="password" value="">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" placeholder="First Name" name="firstName" autofocus>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" placeholder="Last Name" name="lastName" autofocus>
+                        </div>
 
+                        <g:actionSubmit class="btn btn-lg btn-success btn-block"  value="Register"/>
 
                         </fieldset>
+
                     </g:form>
                 </div>
             </div>

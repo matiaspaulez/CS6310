@@ -1,21 +1,22 @@
 package sca
 
-class Student {
+class Student{
 
     int id
-    String userName
-    String password
-    String firstName
-    String LastName
+    User user
     def courses = []
+    
+    static hasMany = [courses: Course]
 
-    def Student(id){
-        this.id = id
+    def Student(user){
+        this.user = user
+        this.id = user.getId()
     }
 
     def ArrayList<Integer> getCourses(){
         return courses;
     }
+
 
     static constraints = {
     }

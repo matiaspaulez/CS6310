@@ -2,7 +2,7 @@ package sca
 
 class User {
 
-    String id
+    int id
     String userName
     String password
     String firstName
