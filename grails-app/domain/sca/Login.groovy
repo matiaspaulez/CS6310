@@ -4,7 +4,7 @@ class Login {
 
     //sample commit
     //another test commit
-    static hasMany = [users: Student]
+    static hasMany = [users: User]
     static constraints = {
     }
 }

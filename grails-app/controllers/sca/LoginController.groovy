@@ -25,6 +25,12 @@ class LoginController {
     def login(User userData){
         def user = User.findByUserName(userData.userName)
 
+
+        if(user == null){
+            redirect(action: "index", params:[error: true, errorLabel: "Wrong User Name or Password"])
+            return
+        }
+
         println "[LOG:] Entering login with user id:   2 ${user.getId()}"
         println "[LOG:] Entering login with user name: ${user.getUserName()}"
         println "[LOG:] Entering login with first name: ${user.getFirstName()}"
@@ -32,10 +38,7 @@ class LoginController {
         println "[LOG:] Entering login with role: ${user.getRole()}"
         println "[LOG:] Entering login with pass: ${user.getPassword()}"
 
-        if(user == null){
-            redirect(action: "index", params:[error: true, errorLabel: "Wrong User Name or Password"])
-
-        } else if (user.role == 'Student'){
+        if (user.role == 'Student'){
             redirect(action: "index", controller: "Student", params:[studentId: user.id])
         } else if(user.role == 'Professor'){
             redirect(action: "index", controller: "Professor", params:[studentId: user.id])

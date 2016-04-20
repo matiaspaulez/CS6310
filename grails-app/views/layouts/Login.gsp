@@ -84,7 +84,7 @@
                             <!-- Change this to a button or input when using this as a form -->
                             %{--<a href="CareConnect" class="btn btn-lg btn-success btn-block">Login</a>--}%
 
-                            <g:actionSubmit class="btn btn-lg btn-success btn-block"  value="Login" />
+                            <g:actionSubmit class="btn btn-lg btn-success btn-block"  value="Login" action="Login" />
                             <g:actionSubmit class="btn btn-lg btn-success btn-block"  value="Register" action="Register"/>
 
 

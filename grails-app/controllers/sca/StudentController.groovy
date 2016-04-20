@@ -10,20 +10,24 @@ class StudentController {
         def user = User.findById(params.studentId)
         def student = Student.findByUser(user) ?: new Student(user)
         def courses = student.getCourses()
-        def coursesCount = courses ?: 0
-
+        //def coursesCount = courses ?: 0
+        def coursesCount = Course.getAll().size()
         println "[LOG:] Student Controller user:  ${user.getUserName()}"
         println "[LOG:] Student Controller student name:  ${student.getUser().getFirstName()}, last name: ${student.getUser().getLastName()}  "
 
         [student: student, courses: courses, user: user, coursesCount: coursesCount]
     }
 
-    def viewDocList(){
-        redirect(action: "index", controller: "DocumentsList", params: [specId: params.specId, allDocs: true])
+    def viewCourseList(){
+        println "[LOG:] viewCourseList $params"
+        def student = User.findById(params.user)
+        def name = student.firstName
+        def last = student.lastName
+
+        println "[LOG:] viewCourseList: $name $last"
+
+        redirect(action: "index", controller: "CourseList", params: [user: "$name $last"])
     }
 
-    def viewProvidersList(){
-        redirect(action: "index", controller: "ProvidersList", params: [specId: params.specId, isSpec: true])
-    }
 
 }

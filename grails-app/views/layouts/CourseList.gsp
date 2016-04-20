@@ -1,14 +1,12 @@
 <%--
   Created by IntelliJ IDEA.
   User: mpaulez
-  Date: 4/17/16
-  Time: 16:54
+  Date: 4/19/16
+  Time: 21:26
 --%>
 
 <%@ page contentType="text/html;charset=UTF-8" %>
-<!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
 
     <meta charset="utf-8">
@@ -17,7 +15,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Student Course Allocation - Student</title>
+    <title>SCA - Course List</title>
 
     <asset:link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
 
@@ -27,11 +25,20 @@
     <!-- MetisMenu CSS -->
     <link href="${request.contextPath}/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
 
+    <!-- DataTables CSS -->
+    <link href="${request.contextPath}/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css"
+          rel="stylesheet">
+
+    <!-- DataTables Responsive CSS -->
+    <link href="${request.contextPath}/bower_components/datatables-responsive/css/dataTables.responsive.css"
+          rel="stylesheet">
+
     <!-- Custom CSS -->
     <link href="${request.contextPath}/dist/css/sb-admin-2.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="${request.contextPath}/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="${request.contextPath}/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet"
+          type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -39,7 +46,6 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
 </head>
 
 <body>
@@ -55,7 +61,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.html">Student Allocation</a>
+            <a class="navbar-brand" href="index.html">SCA</a>
         </div>
         <!-- /.navbar-header -->
 
@@ -73,6 +79,7 @@
                                     <em>Yesterday</em>
                                 </span>
                             </div>
+
                             <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
                         </a>
                     </li>
@@ -85,6 +92,7 @@
                                     <em>Yesterday</em>
                                 </span>
                             </div>
+
                             <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
                         </a>
                     </li>
@@ -97,6 +105,7 @@
                                     <em>Yesterday</em>
                                 </span>
                             </div>
+
                             <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
                         </a>
                     </li>
@@ -123,8 +132,10 @@
                                     <strong>Task 1</strong>
                                     <span class="pull-right text-muted">40% Complete</span>
                                 </p>
+
                                 <div class="progress progress-striped active">
-                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40"
+                                         aria-valuemin="0" aria-valuemax="100" style="width: 40%">
                                         <span class="sr-only">40% Complete (success)</span>
                                     </div>
                                 </div>
@@ -139,8 +150,10 @@
                                     <strong>Task 2</strong>
                                     <span class="pull-right text-muted">20% Complete</span>
                                 </p>
+
                                 <div class="progress progress-striped active">
-                                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+                                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20"
+                                         aria-valuemin="0" aria-valuemax="100" style="width: 20%">
                                         <span class="sr-only">20% Complete</span>
                                     </div>
                                 </div>
@@ -155,8 +168,10 @@
                                     <strong>Task 3</strong>
                                     <span class="pull-right text-muted">60% Complete</span>
                                 </p>
+
                                 <div class="progress progress-striped active">
-                                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60"
+                                         aria-valuemin="0" aria-valuemax="100" style="width: 60%">
                                         <span class="sr-only">60% Complete (warning)</span>
                                     </div>
                                 </div>
@@ -171,8 +186,10 @@
                                     <strong>Task 4</strong>
                                     <span class="pull-right text-muted">80% Complete</span>
                                 </p>
+
                                 <div class="progress progress-striped active">
-                                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+                                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80"
+                                         aria-valuemin="0" aria-valuemax="100" style="width: 80%">
                                         <span class="sr-only">80% Complete (danger)</span>
                                     </div>
                                 </div>
@@ -287,13 +304,13 @@
                         <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                     </li>
                     <li>
-                        <a href="documents.html"><i class="fa fa-file-text fa-fw"></i> Classes</a>
+                        <a href="index.html"><i class="fa fa-file-text fa-fw"></i> Courses</a>
                     </li>
                     <li>
-                        <a href="providers.html"><i class="fa fa-user-md fa-fw"></i> Semmesters</a>
+                        <a href="index.html"><i class="fa fa-user-md fa-fw"></i> Semesters</a>
                     </li>
                     <li>
-                        <a href="patients.html"><i class="fa fa-medkit fa-fw"></i> Plan</a>
+                        <a href="../index.html"><i class="fa fa-medkit fa-fw"></i> My Info</a>
                     </li>
                 </ul>
             </div>
@@ -304,107 +321,57 @@
 
     <!-- Page Content -->
     <div id="page-wrapper">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header">My Dashboard: (${  user.firstName + " " + user.lastName  }) - Student</h1>
-                </div>
-                <!-- /.col-lg-12 -->
-            </div>
-            <!-- /.row -->
-            <div class="row">
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-book fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">${coursesCount}</div>
-                                    <div>My Classes</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a  href="${createLink(action: 'viewCourseList', params: [user: "${user.id}"])}">
-                            <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-green">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-list-alt fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">0</div>
-                                    <div>Semester</div>
-                                </div>
-                            </div>
-                        </div>
-                        %{--<a href="#">--}%
-                        <a  href="${createLink(action: 'viewCourseList', params: [user: "${user.id}"])}">
-                            <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                        %{--</a>--}%
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-yellow">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-th-large fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">0</div>
-                                    <div>Graduation</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="">
-                            <g:link controller="PatientsList" action="index" params="[user: user.id]">
-                                <div class="panel-footer">
-                                    <span class="pull-left">View Details</span>
-                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </g:link>
-                        </a>
-                    </div>
-                </div>
+        <div class="row">
+            <div class="col-lg-12">
+
+                    <h1 class="page-header">${params.user} - Courses </h1>
 
             </div>
-            <div class="row">
-                <div class="col-lg-9">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-
-                        </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                            <div id="morris-donut-chart"></div>
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>
-                    <!-- /.panel -->
-                </div>
-            </div>
+            <!-- /.col-lg-12 -->
         </div>
-        <!-- /.container-fluid -->
-    </div>
-    <!-- /#page-wrapper -->
 
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="dataTable_wrapper">
+                    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                        <thead>
+                        <tr>
+                            <th>Class Number</th>
+                            <th>Class Description</th>
+                            <th>Class Term</th>
+                            <th>Select Course</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        <form role="form">
+                            <div class="checkbox">
+
+                                <g:each in="${courses}">
+
+                                    <tr class="odd gradeX">
+                                        <td>${it.number}</td>
+                                        <td>CS-${it.name}</td>
+                                        <td>${it.semester}</td>
+                                        <td>
+                                            <div class="checkbox">
+                                                <label><input type="checkbox" value=""></label>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                </g:each>
+                            </div>
+                        </form>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+    </div>
 </div>
 <!-- /#wrapper -->
 
@@ -420,11 +387,10 @@
 <!-- Morris Charts JavaScript -->
 <script src="${request.contextPath}/bower_components/raphael/raphael-min.js"></script>
 <script src="${request.contextPath}/bower_components/morrisjs/morris.min.js"></script>
-
+<script src="${request.contextPath}/js/CareConnectCharts.js"></script>
 
 <!-- Custom Theme JavaScript -->
 <script src="${request.contextPath}/dist/js/sb-admin-2.js"></script>
 
 </body>
-
 </html>

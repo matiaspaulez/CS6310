@@ -2,7 +2,7 @@ package sca
 
 class Student{
 
-    int id
+    //int id
     User user
     def courses = []
     
@@ -10,7 +10,7 @@ class Student{
 
     def Student(user){
         this.user = user
-        this.id = user.getId()
+        //this.id = user.getId()
     }
 
     def ArrayList<Integer> getCourses(){
