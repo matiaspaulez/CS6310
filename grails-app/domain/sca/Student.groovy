@@ -1,5 +1,7 @@
 package sca
 
+import grb.StudentSchedule
+
 class Student{
 
     //int id
@@ -11,6 +13,7 @@ class Student{
     def Student(user){
         this.user = user
         //this.id = user.getId()
+        StudentSchedule.printCourses()
     }
 
     def ArrayList<Integer> getCourses(){

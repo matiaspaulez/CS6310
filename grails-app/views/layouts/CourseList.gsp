@@ -324,53 +324,71 @@
         <div class="row">
             <div class="col-lg-12">
 
-                    <h1 class="page-header">${params.user} - Courses </h1>
+                <h1 class="page-header">${params.user} - Courses</h1>
 
             </div>
             <!-- /.col-lg-12 -->
         </div>
 
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="dataTable_wrapper">
-                    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-                        <thead>
-                        <tr>
-                            <th>Class Number</th>
-                            <th>Class Description</th>
-                            <th>Class Term</th>
-                            <th>Select Course</th>
-                        </tr>
-                        </thead>
-                        <tbody>
+        <g:if test="${error == true}">
+            <div class="alert alert-danger">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>Error!</strong> The selected course doesn't meet the requirement
+            </div>
 
-                        <form role="form">
+            <div class="alert alert-success">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>Success!</strong> Courses have been added successfully.
+            </div>
+
+        </g:if>
+        <g:form action="submitForm" controller="CourseList">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="dataTable_wrapper">
+                        <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                            <thead>
+                            <tr>
+                                <th>Class Number</th>
+                                <th>Class Description</th>
+                                <th>Class Term</th>
+                                <th>Select Course</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
                             <div class="checkbox">
 
                                 <g:each in="${courses}">
 
                                     <tr class="odd gradeX">
-                                        <td>${it.number}</td>
-                                        <td>CS-${it.name}</td>
+                                        <td align="center">CS-${it.number}</td>
+                                        <td>${it.name}</td>
                                         <td>${it.semester}</td>
-                                        <td>
+                                        <td align="center">
                                             <div class="checkbox">
-                                                <label><input type="checkbox" value=""></label>
+                                                <label><g:checkBox name="checkbox" value="${it.number}" checked="${false}"/></label>
                                             </div>
-
                                         </td>
                                     </tr>
-
                                 </g:each>
                             </div>
-                        </form>
+                            </tbody>
+                        </table>
+                    </div>
 
-                        </tbody>
-                    </table>
+                    <div class="col-lg-12" align="right">
+
+                        <g:actionSubmit class="btn btn-success btn-lg" value="Submit" />
+                        <g:actionSubmit class="btn btn-danger btn-lg" value="Clear" action="clear"/>
+
+                        <br>
+                        <br>
+                    </div>
                 </div>
+                <!-- /.col-lg-12 -->
             </div>
-            <!-- /.col-lg-12 -->
-        </div>
+        </g:form>
     </div>
 </div>
 <!-- /#wrapper -->

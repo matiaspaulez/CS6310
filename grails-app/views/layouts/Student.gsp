@@ -386,10 +386,11 @@
 
             </div>
             <div class="row">
-                <div class="col-lg-9">
+                <div class="col-lg-5">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-
+                            <p style="color:white">
+                        Class break down</p>
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -404,7 +405,6 @@
         <!-- /.container-fluid -->
     </div>
     <!-- /#page-wrapper -->
-
 </div>
 <!-- /#wrapper -->
 
@@ -420,6 +420,7 @@
 <!-- Morris Charts JavaScript -->
 <script src="${request.contextPath}/bower_components/raphael/raphael-min.js"></script>
 <script src="${request.contextPath}/bower_components/morrisjs/morris.min.js"></script>
+<script src="${request.contextPath}/js/SCA.js"></script>
 
 
 <!-- Custom Theme JavaScript -->

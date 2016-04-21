@@ -39,6 +39,7 @@ public class StudentSchedule
         this.sd = new StudentData(ap.getFile());
         // get students
         this.students = sd.getStudents();
+
         this.totalStudents = students.size();
 
         // main flow
@@ -197,7 +198,7 @@ public class StudentSchedule
         // calculate the dependencies
         for (Student s : students)
         {
-            int i = s.getId();
+            int i = s.getId().intValue();
             for (Integer classId : s.getCourses())
             {
                 int id = classId - 1;
@@ -246,4 +247,19 @@ public class StudentSchedule
 
     }
 
+    private void printCourses(Student student) {
+
+        int id = student.getId().intValue();
+        ArrayList<Integer> courses = student.getCourses();
+
+        for (int i = 0; i < courses.size(); i++) {
+            try {
+                if (arrayVar[id][i][1].get(GRB.DoubleAttr.X) == 1) {
+                    System.out.printf("Student %d takes Course %d during Semester %d\n", id, i, 1);
+                }
+            } catch (GRBException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }
