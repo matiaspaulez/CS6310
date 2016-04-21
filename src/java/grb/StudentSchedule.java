@@ -13,6 +13,11 @@ import gurobi.GRBException;
 import gurobi.GRBLinExpr;
 import gurobi.GRBModel;
 import gurobi.GRBVar;
+import org.hibernate.mapping.List;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
 import utils.ArgumentParser;
 import utils.KTS;
 import sca.Course;
@@ -33,12 +38,15 @@ public class StudentSchedule
     private GRBVar[][][] arrayVar;
     private GRBVar xVar;
 
+
     public StudentSchedule(String[] args) throws GRBException
     {
         this.ap = new ArgumentParser(args);
         this.sd = new StudentData(ap.getFile());
         // get students
-        this.students = sd.getStudents();
+        //this.students = sd.getStudents();
+        //this.students = new ArrayList<Student>(this.getStudents());
+        this.students = new ArrayList<Student>(Student.findAll());
 
         this.totalStudents = students.size();
 
@@ -198,7 +206,7 @@ public class StudentSchedule
         // calculate the dependencies
         for (Student s : students)
         {
-            int i = s.getId().intValue();
+            int i = s.getId();
             for (Integer classId : s.getCourses())
             {
                 int id = classId - 1;
@@ -247,9 +255,9 @@ public class StudentSchedule
 
     }
 
-    private void printCourses(Student student) {
+    public void printCourses(Student student) {
 
-        int id = student.getId().intValue();
+        int id = student.getId();
         ArrayList<Integer> courses = student.getCourses();
 
         for (int i = 0; i < courses.size(); i++) {

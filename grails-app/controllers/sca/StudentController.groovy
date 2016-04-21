@@ -29,5 +29,13 @@ class StudentController {
         redirect(action: "index", controller: "CourseList", params: [user: "$name $last"])
     }
 
+    def viewRecommendationsList(){
+        println "[LOG:] viewRecommendationsList $params"
+        def user = User.findById(params.user)
+        def username = user.userName
+        println "[LOG:] username: $username"
+        redirect(action: "index", controller: "Recommendations", params:[user: user.id])
+    }
+
 
 }

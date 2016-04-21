@@ -1,10 +1,8 @@
 package sca
 
-import grb.StudentSchedule
-
 class Student{
 
-    //int id
+    int id
     User user
     def courses = []
     
@@ -12,12 +10,14 @@ class Student{
 
     def Student(user){
         this.user = user
-        //this.id = user.getId()
-        StudentSchedule.printCourses()
+        this.id = user.getId()
     }
 
     def ArrayList<Integer> getCourses(){
-        return courses;
+        //return courses;
+        ArrayList<Integer> clone = new ArrayList<Integer>(this.courses.size());
+        for(Course item: this.courses) clone.add(item.id);
+        return clone;
     }
 
 

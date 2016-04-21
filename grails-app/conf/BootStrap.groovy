@@ -5,6 +5,22 @@ import sca.Student
 
 class BootStrap {
 
+    def csvToDb(String fname){
+        def courses = Course.all
+        new File(fname).splitEachLine(",") {fields ->
+            courses.add(
+                    name: fields[1],
+                    number: fields[2],
+                    term: fields[3] + fields[4] + fields[5],
+                    availability: fields[6]
+            )
+        }
+        for (course in courses) {
+            println "${course.number} - ${course.name} - ${course.term}"
+        };
+    }
+
+
     def init = { servletContext ->
 
         //users
@@ -44,7 +60,18 @@ class BootStrap {
         def cl16 = new Course("Special Topics: Reinforcement Learning", "8803", "Fall Only").save(failOnError: true)
         def cl17 = new Course("Special Topics: Big Data", "8803", "Spring Only").save(failOnError: true)
 
+        def user = null
+        user = new User(userName: "user1", password: "123", firstName:"John", lastName:"Doe", role:"Student")
+        assert user.save(failOnError:true, flush:true, insert: true)
+        user.errors = null
 
+        assert User.count == 7;
+
+        def student = null
+        student = new Student(user)
+        student.addToCourses(cl0)
+        student.addToCourses(cl17)
+        assert student.save(failOnError:true, flush:true, insert: true)
 
     }
 
