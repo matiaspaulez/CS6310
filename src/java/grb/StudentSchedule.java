@@ -1,23 +1,19 @@
 package grb;
 
-import java.util.ArrayList;
-
-//import core.Course;
 import core.ScheduledCourse;
-//import core.Semester;
-//import core.Student;
 import core.StudentData;
-import gurobi.GRB;
-import gurobi.GRBEnv;
-import gurobi.GRBException;
-import gurobi.GRBLinExpr;
-import gurobi.GRBModel;
-import gurobi.GRBVar;
-import utils.ArgumentParser;
-import utils.KTS;
+import gurobi.*;
 import sca.Course;
 import sca.Semester;
 import sca.Student;
+import utils.ArgumentParser;
+import utils.KTS;
+
+import java.util.ArrayList;
+
+//import core.Course;
+//import core.Semester;
+//import core.Student;
 
 public class StudentSchedule
 {
@@ -198,7 +194,7 @@ public class StudentSchedule
         // calculate the dependencies
         for (Student s : students)
         {
-            int i = s.getId().intValue();
+            int i = s.getId();
             for (Integer classId : s.getCourses())
             {
                 int id = classId - 1;
@@ -249,7 +245,7 @@ public class StudentSchedule
 
     private void printCourses(Student student) {
 
-        int id = student.getId().intValue();
+        int id = student.getId();
         ArrayList<Integer> courses = student.getCourses();
 
         for (int i = 0; i < courses.size(); i++) {
