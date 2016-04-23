@@ -50,6 +50,25 @@ public class StudentSchedule
         performCalculationsOutput();
     }
 
+    public StudentSchedule() throws GRBException
+    {
+        // get students
+        this.students = new ArrayList<Student>(Student.findAll());
+
+        this.totalStudents = students.size();
+
+        // main flow
+        initializeDomain();
+        initilizeGRB();
+        addCourseSizeConstraint();
+        addCourseConstraint();
+        addCourseAvailableConstraint();
+        addMaxClassConstraint();
+        addDependenciesConstraint();
+        // get output
+        performCalculationsOutput();
+    }
+
     private void initialize()
     {
         // initialize sememsters
@@ -65,6 +84,15 @@ public class StudentSchedule
         {
             courses.add(new Course(i));
         }
+    }
+
+    private void initializeDomain()
+    {
+        // initialize sememsters
+        semesters = new ArrayList<Semester>(Semester.findAll());
+
+        // initialize courses
+        courses = new ArrayList<Course>(Course.findAll());
     }
 
     private void initilizeGRB() throws GRBException
@@ -157,7 +185,7 @@ public class StudentSchedule
                     GRBLinExpr tempExpr = new GRBLinExpr();
                     for (int k = 0; k < totalStudents; k++)
                     {
-                        tempExpr.addTerm(1, arrayVar[k][c.getId()][s.getId()]);
+                        tempExpr.addTerm(1, arrayVar[k][c.getId() - 1][s.getId() - 1]);
                     }
                     model.addConstr(tempExpr, GRB.EQUAL, 0,
                             "CourseAvailableConstraint_" + c.getId() + "_"
@@ -243,19 +271,22 @@ public class StudentSchedule
 
     }
 
-    private void printCourses(Student student) {
+    public String printCourses(Student student) {
 
         int id = student.getId();
         ArrayList<Integer> courses = student.getCourses();
+        String results = "";
 
         for (int i = 0; i < courses.size(); i++) {
             try {
-                if (arrayVar[id][i][1].get(GRB.DoubleAttr.X) == 1) {
-                    System.out.printf("Student %d takes Course %d during Semester %d\n", id, i, 1);
+                if (arrayVar[id][i][0].get(GRB.DoubleAttr.X) == 1) {
+                    //System.out.printf("Student %d takes Course %d during Semester %d\n", id, i, 1);
+                    results += "course: " + i + ", ";
                 }
             } catch (GRBException e) {
                 e.printStackTrace();
             }
         }
+        return results;
     }
 }

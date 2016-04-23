@@ -1,6 +1,8 @@
 import sca.User
 import sca.Course
 import sca.Student
+import sca.Semester
+import utils.KTS
 
 
 class BootStrap {
@@ -55,6 +57,39 @@ class BootStrap {
             s.save(flush: true)
             println "[LOG FROM BOOTSRAP:] Student: ${s}"
 
+        }
+
+        //Create user, student and assign courses to it
+        def user = new User(userName: "user1", password: "123", firstName:"Steve", lastName:"Wozniak", role:"Student").save(failOnError: true)
+        def student = new Student(user)
+        student.addToSelectedCourses(Course.get(1))
+        student.addToSelectedCourses(Course.get(10))
+        student.save(failOnError:true, flush:true, insert: true)
+        println "[LOG] ${Student.get(7)}"
+
+        //Create semesters
+        for (int i = 0; i < KTS.SEMESTERS; i++) {
+            def sem = null
+            def sname = ""
+            def start = ""
+            def end = ""
+            if (i % 3 == 0){
+                sname = "FALL"
+                start = "August"
+                end = "December"
+            }
+            else if (i % 3 == 1) {
+                sname = "SPRING"
+                start = "January"
+                end = "April"
+            }
+            else {
+                sname = "SUMMER"
+                start = "May"
+                end = "July"
+            }
+            sem = new Semester(name:sname, startDate: start, endDate: end)
+            assert sem.save(failOnError:true, flush:true, insert: true)
         }
 
     }
