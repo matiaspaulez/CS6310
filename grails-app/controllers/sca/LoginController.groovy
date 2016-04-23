@@ -44,6 +44,8 @@ class LoginController {
             redirect(action: "index", controller: "Professor", params:[studentId: user.id])
         } else if(user.role == 'TA'){
             redirect(action: "index", controller: "TA", params:[studentId: user.id])
+        } else if (user.role == 'Admin'){
+            redirect(action: "index", controller: "Admin", params:[id: user.id])
         }
 
     }
