@@ -14,10 +14,14 @@ class StudentController {
         println "[LOG:] Student Controller student: ${st}"
 
         def selectedCourses = st.selectedCourses
-        def coursesCount = selectedCourses.size() ?: 0
+        def coursesSelectedCount = selectedCourses.size() ?: 0
+
+        def studentCompletedCourses = st.getCompletedCourses()
+        def coursesCompletedCount = studentCompletedCourses.size() ?: 0
+
         println "[LOG:] Student Controller student my courses size: ${coursesCount}"
 
-        [student: st, selectedCourses: selectedCourses, coursesCount: coursesCount]
+        [student: st, selectedCourses: selectedCourses, csc: coursesSelectedCount, ccc: coursesCompletedCount]
     }
 
     def viewCourseList(){

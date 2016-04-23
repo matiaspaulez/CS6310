@@ -307,7 +307,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">My Dashboard: (${student.user.firstName + " " + student.user.lastName  }) - Student</h1>
+                    <h1 class="page-header">My Dashboard: (${student.user.firstName + " " + student.user.lastName  }) - Student - Spring 2016</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -321,8 +321,8 @@
                                     <i class="fa fa-book fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">${coursesCount}</div>
-                                    <div>My Classes</div>
+                                    <div class="huge">${csc}</div>
+                                    <div>My Selected Classes</div>
                                 </div>
                             </div>
                         </div>
