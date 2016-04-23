@@ -5,7 +5,7 @@
   Time: 21:26
 --%>
 
-<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ page import="sca.CourseListController" contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
 
@@ -16,6 +16,8 @@
     <meta name="author" content="">
 
     <title>SCA - Course List</title>
+
+    <g:include controller="CourseList" />
 
     <asset:link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
 
@@ -324,7 +326,7 @@
         <div class="row">
             <div class="col-lg-12">
 
-                <h1 class="page-header">${params.user} - Courses</h1>
+                <h1 class="page-header">${studentName} - Courses</h1>
 
             </div>
             <!-- /.col-lg-12 -->
@@ -343,6 +345,7 @@
 
         </g:if>
         <g:form action="submitForm" controller="CourseList">
+            <input type="hidden" name="id" value="${params.id}" />
             <div class="row">
                 <div class="col-lg-12">
                     <div class="dataTable_wrapper">
@@ -360,14 +363,15 @@
                             <div class="checkbox">
 
                                 <g:each in="${courses}">
-
                                     <tr class="odd gradeX">
                                         <td align="center">CS-${it.number}</td>
                                         <td>${it.name}</td>
                                         <td>${it.semester}</td>
                                         <td align="center">
                                             <div class="checkbox">
-                                                <label><g:checkBox name="checkbox" value="${it.number}" checked="${false}"/></label>
+                                                <label><g:checkBox name="checkbox" value="${it.id}"
+                                                                   checked ="${sc.find {n-> n.id == it.id} ? true : false}"/>
+                                                </label>
                                             </div>
                                         </td>
                                     </tr>

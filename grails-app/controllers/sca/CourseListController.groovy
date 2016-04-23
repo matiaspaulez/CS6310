@@ -5,26 +5,38 @@ class CourseListController {
     def index() {
 
         def courses = Course.getAll()
-        def studentName = params.name
+        println "[LOG:] Course list controller params: $params"
+        def student = Student.findById(params.id)
+        println "[LOG:] Course list controller student: $student"
+
+        def firstName = student.user.firstName
+        def lastName = student.user.lastName
+        def studentCourses = student.selectedCourses
+        println "[LOG:] Course list controller studentCourses: $studentCourses"
+
         def error = false
-        [name: studentName, courses: courses, error: error]
+        [courses: courses, error: error, studentName: "$firstName $lastName", sc: studentCourses, id: params.id]
     }
 
 
     def submit(){
-        println "COURSE LIST CONTROLLER:"
-        println "PARAMS: ${params}"
-        for (number in params.checkbox){
 
-        println "Course ${Course.findByNumber(number).name}"
-
+        def st = Student.findById(params.id)
+        println "from here:: $st"
+        for (pid in params.checkbox){
+            println "Course ${Course.findById(pid)}"
+            st.addToSelectedCourses(Course.findById(pid))
         }
 
-        return
-        //redirect(action:"index", controller:"Student", params:[update: true])
+        println "from here:: $st"
+
+        st.save(flush: true)
+
+        redirect(action:"index", controller:"Student", params:[update: true, id: params.id])
     }
 
     def clear(){
-
+        index()
     }
+
 }

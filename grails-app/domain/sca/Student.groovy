@@ -1,26 +1,46 @@
 package sca
 
-import grb.StudentSchedule
 
 class Student{
 
-    //int id
+    int id
     User user
-    def courses = []
-    
-    static hasMany = [courses: Course]
+
+    static hasMany = [selectedCourses: Course]
 
     def Student(user){
         this.user = user
-        //this.id = user.getId()
-        StudentSchedule.printCourses()
+        this.id = user.id
+
     }
 
-    def ArrayList<Integer> getCourses(){
+    public ArrayList<Integer> getCourses(){
+
+        ArrayList<Integer> courses = new ArrayList<Integer>()
+        selectedCourses.each{
+            courses.add(it.id)
+        }
         return courses;
     }
 
-
     static constraints = {
     }
+
+
+
+    public String toString(){
+        return new String("id $id, " +
+                "user: $user, " +
+                "firstName: $user.firstName, " +
+                "lastName: $user.lastName, " +
+                "userName: $user.userName, " +
+                "role: $user.role, " +
+                "password: ****, " +
+                "SelectedCourses: " +
+                selectedCourses
+        )
+
+    }
+
+
 }

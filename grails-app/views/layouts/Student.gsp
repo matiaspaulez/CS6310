@@ -307,7 +307,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">My Dashboard: (${  user.firstName + " " + user.lastName  }) - Student</h1>
+                    <h1 class="page-header">My Dashboard: (${student.user.firstName + " " + student.user.lastName  }) - Student</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -326,7 +326,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a  href="${createLink(action: 'viewCourseList', params: [user: "${user.id}"])}">
+                        <a  href="${createLink(action: 'viewCourseList', params: [id: student.id])}">
                             <div class="panel-footer">
                                 <span class="pull-left">View Details</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -349,7 +349,7 @@
                             </div>
                         </div>
                         %{--<a href="#">--}%
-                        <a  href="${createLink(action: 'viewCourseList', params: [user: "${user.id}"])}">
+                        <a  href="${createLink(action: 'viewCourseList', params: [id: student.id])}">
                             <div class="panel-footer">
                                 <span class="pull-left">View Details</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -373,7 +373,7 @@
                             </div>
                         </div>
                         <a href="">
-                            <g:link controller="PatientsList" action="index" params="[user: user.id]">
+                            <g:link controller="CourseList" action="index" params="[id: student.id]">
                                 <div class="panel-footer">
                                     <span class="pull-left">View Details</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -386,7 +386,7 @@
 
             </div>
             <div class="row">
-                <div class="col-lg-5">
+                <div class="col-lg-6">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <p style="color:white">

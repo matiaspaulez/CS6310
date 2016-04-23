@@ -7,7 +7,8 @@ class Course {
     String name
     String number
 
-    def Course(name, number, semester){
+    def Course(id, name, number, semester){
+        this.id = id
         this.semester = semester
         this.name = name
         this.number = number
@@ -20,5 +21,9 @@ class Course {
 
 
     static constraints = {
+    }
+
+    public String toString(){
+        return "CS-$number"
     }
 }

@@ -11,4 +11,5 @@ class User {
 
     static constraints = {
     }
+
 }

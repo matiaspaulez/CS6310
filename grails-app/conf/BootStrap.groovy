@@ -8,14 +8,15 @@ class BootStrap {
     def init = { servletContext ->
 
         //users
-        def u1 = new User(userName: "st1", password: "123", firstName:"John", lastName:"Doe", role:"Student").save(failOnError: true)
-        def u2 = new User(userName: "st2", password: "123", firstName:"Dave", lastName:"Johnson", role:"Student").save(failOnError: true)
-        def u3 = new User(userName: "st3", password: "123", firstName:"Susan", lastName:"Sanchez", role:"Student").save(failOnError: true)
-        def u4 = new User(userName: "st4", password: "123", firstName:"Lily", lastName:"Martin", role:"Student").save(failOnError: true)
-        def u5 = new User(userName: "st5", password: "123", firstName:"Ted", lastName:"Adams", role:"Student").save(failOnError: true)
-        def u6 = new User(userName: "st6", password: "123", firstName:"Fred", lastName:"Smith", role:"Student").save(failOnError: true)
+        def u1 = new User(userName: "st1", password: "123", firstName: "John", lastName: "Doe", role: "Student").save(failOnError: true)
+        def u2 = new User(userName: "st2", password: "123", firstName: "Dave", lastName: "Johnson", role: "Student").save(failOnError: true)
+        def u3 = new User(userName: "st3", password: "123", firstName: "Susan", lastName: "Sanchez", role: "Student").save(failOnError: true)
+        def u4 = new User(userName: "st4", password: "123", firstName: "Lily", lastName: "Martin", role: "Student").save(failOnError: true)
+        def u5 = new User(userName: "st5", password: "123", firstName: "Ted", lastName: "Adams", role: "Student").save(failOnError: true)
+        def u6 = new User(userName: "st6", password: "123", firstName: "Fred", lastName: "Smith", role: "Student").save(failOnError: true)
 
         //students
+
         def st1 = new Student(u1).save(failOnError: true)
         def st2 = new Student(u2).save(failOnError: true)
         def st3 = new Student(u3).save(failOnError: true)
@@ -23,32 +24,48 @@ class BootStrap {
         def st5 = new Student(u5).save(failOnError: true)
         def st6 = new Student(u6).save(failOnError: true)
 
-
         //courses
-        def cl0 = new Course("Advanced Operating Systems", "6210", "Fall Only").save(failOnError: true)
-        def cl1 = new Course("Computer Networks", "6250", "All").save(failOnError: true)
-        def cl2 = new Course("Software Development Process", "6300", "All").save(failOnError: true)
-        def cl3 = new Course("Machine Learning", "7641", "All").save(failOnError: true)
-        def cl4 = new Course("High Performance Computer Architecture", "6290", "Spring Only").save(failOnError: true)
-        def cl5 = new Course("Software Architecture and Design", "6310", "All").save(failOnError: true)
-        def cl6 = new Course("Intro to Health Informatics", "6440", "Fall Only").save(failOnError: true)
-        def cl7 = new Course("Computability, Complexity and Algorithms", "6505", "All").save(failOnError: true)
-        def cl8 = new Course("Knowledge-Based Artificial Intelligence, Cognitive Systems", "7637", "All").save(failOnError: true)
-        def cl9 = new Course("Computer Vision", "4495", "Spring Only").save(failOnError: true)
-        def cl10 = new Course("Computational Photography", "6475", "Fall Only").save(failOnError: true)
-        def cl11 = new Course("Introduction to Operating Systems", "8803", "All").save(failOnError: true)
-        def cl12 = new Course("Artificial Intelligence for Robotics", "8803", "All").save(failOnError: true)
-        def cl13 = new Course("Introduction to Information Security", "6035", "Spring Only").save(failOnError: true)
-        def cl14 = new Course("High-Performance Computing", "6220", "Fall Only").save(failOnError: true)
-        def cl15 = new Course("Machine Learning for Trading", "7646", "Spring Only").save(failOnError: true)
-        def cl16 = new Course("Special Topics: Reinforcement Learning", "8803", "Fall Only").save(failOnError: true)
-        def cl17 = new Course("Special Topics: Big Data", "8803", "Spring Only").save(failOnError: true)
+        def ac = [
+                new Course(1, "Advanced Operating Systems", "6210", "Fall Only").save(failOnError: true),
+                new Course(2, "Computer Networks", "6250", "All").save(failOnError: true),
+                new Course(3, "Software Development Process", "6300", "All").save(failOnError: true),
+                new Course(4, "Machine Learning", "7641", "All").save(failOnError: true),
+                new Course(5, "High Performance Computer Architecture", "6290", "Spring Only").save(failOnError: true),
+                new Course(6, "Software Architecture and Design", "6310", "All").save(failOnError: true),
+                new Course(7, "Intro to Health Informatics", "6440", "Fall Only").save(failOnError: true),
+                new Course(8, "Computability, Complexity and Algorithms", "6505", "All").save(failOnError: true),
+                new Course(9, "Knowledge-Based Artificial Intelligence, Cognitive Systems", "7637", "All").save(failOnError: true),
+                new Course(10, "Computer Vision", "4495", "Spring Only").save(failOnError: true),
+                new Course(11, "Computational Photography", "6475", "Fall Only").save(failOnError: true),
+                new Course(12, "Introduction to Operating Systems", "8803", "All").save(failOnError: true),
+                new Course(13, "Artificial Intelligence for Robotics", "8803", "All").save(failOnError: true),
+                new Course(14, "Introduction to Information Security", "6035", "Spring Only").save(failOnError: true),
+                new Course(15, "High-Performance Computing", "6220", "Fall Only").save(failOnError: true),
+                new Course(16, "Machine Learning for Trading", "7646", "Spring Only").save(failOnError: true),
+                new Course(17, "Special Topics: Reinforcement Learning", "8803", "Fall Only").save(failOnError: true),
+                new Course(18, "Special Topics: Big Data", "8803", "Spring Only").save(failOnError: true)]
 
 
+        for (Student s in Student.getAll()) {
 
+            s.addToSelectedCourses(ac[getRand(ac.size())])
+            s.addToSelectedCourses(ac[getRand(ac.size())])
+            s.addToSelectedCourses(ac[getRand(ac.size())])
+            s.addToSelectedCourses(ac[getRand(ac.size())])
+            s.save(flush: true)
+            println "[LOG FROM BOOTSRAP:] Student: ${s}"
+
+        }
+
+    }
+
+    def getRand(range){
+
+        return Math.abs(new Random().nextInt() % (range - 1)) + 1
     }
 
 
     def destroy = {
     }
+
 }

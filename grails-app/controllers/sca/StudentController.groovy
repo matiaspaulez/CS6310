@@ -5,28 +5,24 @@ class StudentController {
     def index(Integer max) {
 
 
-        println "params: ${params}"
+        println "[LOG:] Student Controller params: ${params}"
 
-        def user = User.findById(params.studentId)
-        def student = Student.findByUser(user) ?: new Student(user)
-        def courses = student.getCourses()
-        //def coursesCount = courses ?: 0
-        def coursesCount = Course.getAll().size()
-        println "[LOG:] Student Controller user:  ${user.getUserName()}"
-        println "[LOG:] Student Controller student name:  ${student.getUser().getFirstName()}, last name: ${student.getUser().getLastName()}  "
+        def user = User.findById(params.id)
+        println "[LOG:] Student Controller user:  ${user.userName}"
 
-        [student: student, courses: courses, user: user, coursesCount: coursesCount]
+        def st = Student.findById(params.id) ?: new Student(user).save(failOnError: true)
+        println "[LOG:] Student Controller student: ${st}"
+
+        def selectedCourses = st.selectedCourses
+        def coursesCount = selectedCourses.size() ?: 0
+        println "[LOG:] Student Controller student my courses size: ${coursesCount}"
+
+        [student: st, selectedCourses: selectedCourses, coursesCount: coursesCount]
     }
 
     def viewCourseList(){
-        println "[LOG:] viewCourseList $params"
-        def student = User.findById(params.user)
-        def name = student.firstName
-        def last = student.lastName
-
-        println "[LOG:] viewCourseList: $name $last"
-
-        redirect(action: "index", controller: "CourseList", params: [user: "$name $last"])
+        println "[LOG:] viewCourseList params: $params"
+        redirect(action: "index", controller: "CourseList", params: [id: params.id])
     }
 
 
