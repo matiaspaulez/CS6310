@@ -28,28 +28,32 @@ class BootStrap {
 
         //courses
         def ac = [
-                new Course(1, "Advanced Operating Systems", "6210", "Fall Only").save(failOnError: true),
-                new Course(2, "Computer Networks", "6250", "All").save(failOnError: true),
-                new Course(3, "Software Development Process", "6300", "All").save(failOnError: true),
-                new Course(4, "Machine Learning", "7641", "All").save(failOnError: true),
-                new Course(5, "High Performance Computer Architecture", "6290", "Spring Only").save(failOnError: true),
-                new Course(6, "Software Architecture and Design", "6310", "All").save(failOnError: true),
-                new Course(7, "Intro to Health Informatics", "6440", "Fall Only").save(failOnError: true),
-                new Course(8, "Computability, Complexity and Algorithms", "6505", "All").save(failOnError: true),
-                new Course(9, "Knowledge-Based Artificial Intelligence, Cognitive Systems", "7637", "All").save(failOnError: true),
-                new Course(10, "Computer Vision", "4495", "Spring Only").save(failOnError: true),
-                new Course(11, "Computational Photography", "6475", "Fall Only").save(failOnError: true),
-                new Course(12, "Introduction to Operating Systems", "8803", "All").save(failOnError: true),
-                new Course(13, "Artificial Intelligence for Robotics", "8803", "All").save(failOnError: true),
-                new Course(14, "Introduction to Information Security", "6035", "Spring Only").save(failOnError: true),
-                new Course(15, "High-Performance Computing", "6220", "Fall Only").save(failOnError: true),
-                new Course(16, "Machine Learning for Trading", "7646", "Spring Only").save(failOnError: true),
-                new Course(17, "Special Topics: Reinforcement Learning", "8803", "Fall Only").save(failOnError: true),
-                new Course(18, "Special Topics: Big Data", "8803", "Spring Only").save(failOnError: true)]
+                new Course(0, "Advanced Operating Systems", "6210", "Fall Only").save(failOnError: true),
+                new Course(1, "Computer Networks", "6250", "All").save(failOnError: true),
+                new Course(2, "Software Development Process", "6300", "All").save(failOnError: true),
+                new Course(3, "Machine Learning", "7641", "All").save(failOnError: true),
+                new Course(4, "High Performance Computer Architecture", "6290", "Spring Only").save(failOnError: true),
+                new Course(5, "Software Architecture and Design", "6310", "All").save(failOnError: true),
+                new Course(6, "Intro to Health Informatics", "6440", "Fall Only").save(failOnError: true),
+                new Course(7, "Computability, Complexity and Algorithms", "6505", "All").save(failOnError: true),
+                new Course(8, "Knowledge-Based Artificial Intelligence, Cognitive Systems", "7637", "All").save(failOnError: true),
+                new Course(9, "Computer Vision", "4495", "Spring Only").save(failOnError: true),
+                new Course(10, "Computational Photography", "6475", "Fall Only").save(failOnError: true),
+                new Course(11, "Introduction to Operating Systems", "8803", "All").save(failOnError: true),
+                new Course(12, "Artificial Intelligence for Robotics", "8803", "All").save(failOnError: true),
+                new Course(13, "Introduction to Information Security", "6035", "Spring Only").save(failOnError: true),
+                new Course(14, "High-Performance Computing", "6220", "Fall Only").save(failOnError: true),
+                new Course(15, "Machine Learning for Trading", "7646", "Spring Only").save(failOnError: true),
+                new Course(16, "Special Topics: Reinforcement Learning", "8803", "Fall Only").save(failOnError: true),
+                new Course(17, "Special Topics: Big Data", "8803", "Spring Only").save(failOnError: true)]
 
 
         for (Student s in Student.getAll()) {
 
+            s.addToSelectedCourses(ac[getRand(ac.size())])
+            s.addToSelectedCourses(ac[getRand(ac.size())])
+            s.addToSelectedCourses(ac[getRand(ac.size())])
+            s.addToSelectedCourses(ac[getRand(ac.size())])
             s.addToSelectedCourses(ac[getRand(ac.size())])
             s.addToSelectedCourses(ac[getRand(ac.size())])
             s.addToSelectedCourses(ac[getRand(ac.size())])
@@ -64,6 +68,9 @@ class BootStrap {
         def student = new Student(user)
         student.addToSelectedCourses(Course.get(1))
         student.addToSelectedCourses(Course.get(10))
+        student.addToSelectedCourses(Course.get(3))
+        student.addToSelectedCourses(Course.get(5))
+        student.addToSelectedCourses(Course.get(7))
         student.save(failOnError:true, flush:true, insert: true)
         println "[LOG] ${Student.get(7)}"
 

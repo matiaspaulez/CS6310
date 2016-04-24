@@ -10,6 +10,8 @@ import utils.ArgumentParser;
 import utils.KTS;
 
 import java.util.ArrayList;
+import java.util.Map;
+import java.util.HashMap;
 
 //import core.Course;
 //import core.Semester;
@@ -100,12 +102,12 @@ public class StudentSchedule
 
         env = new GRBEnv();
         model = new GRBModel(env);
-        arrayVar = new GRBVar[totalStudents][KTS.COURSES][KTS.SEMESTERS];
+        arrayVar = new GRBVar[totalStudents][courses.size()][semesters.size()];
         for (int i = 0; i < totalStudents; i++)
         {
-            for (int j = 0; j < KTS.COURSES; j++)
+            for (int j = 0; j < courses.size(); j++)
             {
-                for (int k = 0; k < KTS.SEMESTERS; k++)
+                for (int k = 0; k < semesters.size(); k++)
                 {
                     arrayVar[i][j][k] = model.addVar(0, 1, 0, GRB.BINARY,
                             i + "_" + j + "_" + k);
@@ -134,9 +136,9 @@ public class StudentSchedule
 
         // all students for class are less than xVar the program find the
         // smallest value
-        for (int i = 0; i < KTS.COURSES; i++)
+        for (int i = 0; i < courses.size(); i++)
         {
-            for (int j = 0; j < KTS.SEMESTERS; j++)
+            for (int j = 0; j < semesters.size(); j++)
             {
                 GRBLinExpr tempExpr = new GRBLinExpr();
                 for (int k = 0; k < totalStudents; k++)
@@ -160,7 +162,7 @@ public class StudentSchedule
             for (int j = 0; j < stCourses.size(); j++)
             {
                 GRBLinExpr tempExpr = new GRBLinExpr();
-                for (int k = 0; k < KTS.SEMESTERS; k++)
+                for (int k = 0; k < semesters.size(); k++)
                 {
                     tempExpr.addTerm(1, arrayVar[i][stCourses.get(j) - 1][k]);
                 }
@@ -238,7 +240,7 @@ public class StudentSchedule
                 if ((KTS.getDependency(course) != -1))
                 {
                     GRBLinExpr tempExpr = new GRBLinExpr();
-                    tempExpr.addTerm(1, arrayVar[i][course.getId()][0]);
+                    tempExpr.addTerm(1, arrayVar[i - 1][course.getId() - 1][0]);
                     model.addConstr(tempExpr, GRB.EQUAL, 0,
                             "DependenciesConstraint_" + i + "_" + id);
                     for (int k = 0; k < KTS.SEMESTERS; k++)
@@ -248,9 +250,9 @@ public class StudentSchedule
                         for (int k1 = 0; k1 < k; k1++)
                         {
                             fooExpr.addTerm(1,
-                                    arrayVar[i][KTS.getDependency(course)][k1]);
+                                    arrayVar[i - 1][KTS.getDependency(course)][k1]);
                             varExpr.addTerm(1,
-                                    arrayVar[i][course.getId()][k1 + 1]);
+                                    arrayVar[i - 1][course.getId()][k1 + 1]);
                         }
                         model.addConstr(varExpr, GRB.LESS_EQUAL, fooExpr,
                                 "DependenciesConstraint_" + i + "_" + id);
@@ -271,20 +273,25 @@ public class StudentSchedule
 
     }
 
-    public String printCourses(Student student) {
+    public Map printCourses(Student student) {
 
         int id = student.getId();
         ArrayList<Integer> courses = student.getCourses();
-        String results = "";
+        //String results = "";
+        Map results = new HashMap();
 
         for (int i = 0; i < courses.size(); i++) {
-            try {
-                if (arrayVar[id][i][0].get(GRB.DoubleAttr.X) == 1) {
-                    //System.out.printf("Student %d takes Course %d during Semester %d\n", id, i, 1);
-                    results += "course: " + i + ", ";
+            for (int k = 0; k < semesters.size(); k++) {
+                try {
+                    if (arrayVar[id - 1][i][k].get(GRB.DoubleAttr.X) == 1) {
+                        //System.out.printf("Student %d takes Course %d during Semester %d\n", id, i, 1);
+                        //results += "course: " + (i + 1) + ", semester: " + Semester.get(k + 1);
+                        Semester sem = (Semester)Semester.get(k+1);
+                        results.put(sem.getId(), i);
+                    }
+                } catch (GRBException e) {
+                    e.printStackTrace();
                 }
-            } catch (GRBException e) {
-                e.printStackTrace();
             }
         }
         return results;
