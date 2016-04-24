@@ -19,7 +19,8 @@ class StudentController {
         def studentCompletedCourses = st.getCompletedCourses()
         def coursesCompletedCount = studentCompletedCourses.size() ?: 0
 
-        println "[LOG:] Student Controller student my courses size: ${coursesCount}"
+        println "[LOG:] StudentController coursesCompletedCount: ${coursesCompletedCount}"
+        println "[LOG:] StudentController coursesSelectedCount: ${coursesSelectedCount}"
 
         [student: st, selectedCourses: selectedCourses, csc: coursesSelectedCount, ccc: coursesCompletedCount]
     }

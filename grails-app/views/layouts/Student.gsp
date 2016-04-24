@@ -24,6 +24,7 @@
     <!-- Bootstrap Core CSS -->
     <link href="${request.contextPath}/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
+
     <!-- MetisMenu CSS -->
     <link href="${request.contextPath}/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
 
@@ -31,7 +32,8 @@
     <link href="${request.contextPath}/dist/css/sb-admin-2.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="${request.contextPath}/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="${request.contextPath}/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet"
+          type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -55,7 +57,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.html">Student Allocation</a>
+            <a class="navbar-brand" href="index.html">Student Course Allocation -  SCA by Team AWESOME</a>
         </div>
         <!-- /.navbar-header -->
 
@@ -73,6 +75,7 @@
                                     <em>Yesterday</em>
                                 </span>
                             </div>
+
                             <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
                         </a>
                     </li>
@@ -85,6 +88,7 @@
                                     <em>Yesterday</em>
                                 </span>
                             </div>
+
                             <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
                         </a>
                     </li>
@@ -97,6 +101,7 @@
                                     <em>Yesterday</em>
                                 </span>
                             </div>
+
                             <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
                         </a>
                     </li>
@@ -123,8 +128,10 @@
                                     <strong>Task 1</strong>
                                     <span class="pull-right text-muted">40% Complete</span>
                                 </p>
+
                                 <div class="progress progress-striped active">
-                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40"
+                                         aria-valuemin="0" aria-valuemax="100" style="width: 40%">
                                         <span class="sr-only">40% Complete (success)</span>
                                     </div>
                                 </div>
@@ -139,8 +146,10 @@
                                     <strong>Task 2</strong>
                                     <span class="pull-right text-muted">20% Complete</span>
                                 </p>
+
                                 <div class="progress progress-striped active">
-                                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+                                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20"
+                                         aria-valuemin="0" aria-valuemax="100" style="width: 20%">
                                         <span class="sr-only">20% Complete</span>
                                     </div>
                                 </div>
@@ -155,8 +164,10 @@
                                     <strong>Task 3</strong>
                                     <span class="pull-right text-muted">60% Complete</span>
                                 </p>
+
                                 <div class="progress progress-striped active">
-                                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60"
+                                         aria-valuemin="0" aria-valuemax="100" style="width: 60%">
                                         <span class="sr-only">60% Complete (warning)</span>
                                     </div>
                                 </div>
@@ -171,8 +182,10 @@
                                     <strong>Task 4</strong>
                                     <span class="pull-right text-muted">80% Complete</span>
                                 </p>
+
                                 <div class="progress progress-striped active">
-                                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+                                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80"
+                                         aria-valuemin="0" aria-valuemax="100" style="width: 80%">
                                         <span class="sr-only">80% Complete (danger)</span>
                                     </div>
                                 </div>
@@ -307,124 +320,197 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">My Dashboard: (${student.user.firstName + " " + student.user.lastName  }) - Student - Spring 2016</h1>
+                    <h1 class="page-header">My Dashboard: (${student.user.firstName + " " + student.user.lastName}) - Student - Spring 2016</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
-            <div class="row">
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-book fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">${csc}</div>
-                                    <div>My Selected Classes</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a  href="${createLink(action: 'viewCourseList', params: [id: student.id])}">
-                            <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-green">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-list-alt fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">0</div>
-                                    <div>Semester</div>
-                                </div>
-                            </div>
-                        </div>
-                        %{--<a href="#">--}%
-                        <a  href="${createLink(action: 'viewCourseList', params: [id: student.id])}">
-                            <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                        %{--</a>--}%
-                    </div>
-                </div>
 
-            <div class="col-lg-3 col-md-6">
-                <div class="panel panel-green">
-                    <div class="panel-heading">
-                        <div class="row">
-                            <div class="col-xs-3">
-                                <i class="fa fa-list-alt fa-5x"></i>
-                            </div>
-                            <div class="col-xs-9 text-right">
-                                <div class="huge">0</div>
-                                <div>Recommendations</div>
-                            </div>
-                        </div>
-                    </div>
-                    %{--<a href="#">--}%
-                    <a  href="${createLink(action: 'viewRecommendationsList', params: [id: student.id])}">
-                        <div class="panel-footer">
-                            <span class="pull-left">View Details</span>
-                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                            <div class="clearfix"></div>
-                        </div>
-                    </a>
-                    %{--</a>--}%
-                </div>
-            </div>
+            <!-- MAIN BUTTONS -->
+            <div>
+                <!-- SELECTED CLASSES -->
+                <div class="row">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-book fa-5x"></i>
+                                    </div>
 
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-yellow">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-th-large fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">0</div>
-                                    <div>Graduation</div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">${csc}</div>
+
+                                        <div>My Selected Classes</div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <a href="">
-                            <g:link controller="CourseList" action="index" params="[id: student.id]">
+                            <a href="${createLink(action: 'viewCourseList', params: [id: student.id])}">
                                 <div class="panel-footer">
                                     <span class="pull-left">View Details</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+
                                     <div class="clearfix"></div>
                                 </div>
-                            </g:link>
-                        </a>
+                            </a>
+                        </div>
                     </div>
-                </div>
 
-            </div>
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <p style="color:white">
-                        Class break down</p>
+
+                    <!-- RECOMMENDATION HISTORY -->
+                    <div class="col-lg-3 col-md-6">
+                        <div class="panel panel-yellow">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-star-o fa-5x"></i>
+                                    </div>
+
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">0</div>
+
+                                        <div>Recommendation History</div>
+                                    </div>
+                                </div>
+                            </div>
+                            %{--<a href="#">--}%
+                            <a href="${createLink(action: 'viewCourseList', params: [id: student.id])}">
+                                <div class="panel-footer">
+                                    <span class="pull-left">View Details</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                            %{--</a>--}%
                         </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                            <div id="morris-donut-chart"></div>
-                        </div>
-                        <!-- /.panel-body -->
                     </div>
-                    <!-- /.panel -->
+
+                    <!-- Completed Courses -->
+                    <div class="col-lg-3 col-md-6">
+                        <div class="panel panel-green">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-check-circle fa-5x"></i>
+                                    </div>
+
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">${ccc}</div>
+
+                                        <div>Completed Courses</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="">
+                                <g:link controller="CourseList" action="index"
+                                        params="[id: student.id, completed: true]">
+                                    <div class="panel-footer">
+                                        <span class="pull-left">View Details</span>
+                                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </g:link>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- GRADUATION -->
+                    <div class="col-lg-3 col-md-6">
+                        <div class="panel panel-red">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-graduation-cap fa-5x"></i>
+                                    </div>
+
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">Actions: 2</div>
+                                        <div>Graduation</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="">
+                                <g:link controller="CourseList" action="index" params="[id: student.id]">
+                                    <div class="panel-footer">
+                                        <span class="pull-left">View Details</span>
+                                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </g:link>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- MAIN BUTTONS END-->
+
+
+                    <div class="col-lg-6">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <p style="color:white">
+                                    Course Recommendations</p>
+                            </div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered table-hover">
+                                        <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>First Name</th>
+                                            <th>Last Name</th>
+                                            <th>Username</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Mark</td>
+                                            <td>Otto</td>
+                                            <td>@mdo</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>Jacob</td>
+                                            <td>Thornton</td>
+                                            <td>@fat</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>Larry</td>
+                                            <td>the Bird</td>
+                                            <td>@twitter</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- /.table-responsive -->
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                        <!-- /.panel -->
+                    </div>
+                    <!-- /.col-lg-6 -->
+
+
+                    <div class="col-lg-6">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <p style="color:white">
+                                    Class break down</p>
+                            </div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+                                <div id="morris-donut-chart"></div>
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                        <!-- /.panel -->
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -451,6 +537,9 @@
 
 <!-- Custom Theme JavaScript -->
 <script src="${request.contextPath}/dist/js/sb-admin-2.js"></script>
+
+
+
 
 </body>
 

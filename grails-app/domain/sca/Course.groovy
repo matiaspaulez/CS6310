@@ -25,6 +25,6 @@ class Course {
     }
 
     public String toString(){
-        return "CS-$number"
+        return "ID: $id CS-$number"
     }
 }

@@ -17,7 +17,7 @@
 
     <title>SCA - Course List</title>
 
-    <g:include controller="CourseList" />
+    <g:include controller="CourseList"/>
 
     <asset:link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
 
@@ -303,7 +303,7 @@
                         <!-- /input-group -->
                     </li>
                     <li>
-                        <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                        <a href="../../student/index/${params.id}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                     </li>
                     <li>
                         <a href="index.html"><i class="fa fa-file-text fa-fw"></i> Courses</a>
@@ -326,26 +326,22 @@
         <div class="row">
             <div class="col-lg-12">
 
-                <h1 class="page-header">${studentName} - Courses</h1>
+                <h1 class="page-header">${studentName} - ${params.completed == "true" ? "Completed" : " "} Courses</h1>
 
             </div>
             <!-- /.col-lg-12 -->
         </div>
 
-        <g:if test="${error == true}">
+        <g:if test="${params.error == "true"}">
             <div class="alert alert-danger">
                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                <strong>Error!</strong> The selected course doesn't meet the requirement
-            </div>
-
-            <div class="alert alert-success">
-                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                <strong>Success!</strong> Courses have been added successfully.
+                <strong>Error!</strong> The course selection doesn't meet the requirement, please choose a maximum of 2 courses.
             </div>
 
         </g:if>
         <g:form action="submitForm" controller="CourseList">
-            <input type="hidden" name="id" value="${params.id}" />
+            <input type="hidden" name="id" value="${params.id}"/>
+
             <div class="row">
                 <div class="col-lg-12">
                     <div class="dataTable_wrapper">
@@ -362,18 +358,27 @@
 
                             <div class="checkbox">
 
-                                <g:each in="${courses}">
+                                <g:each in="${params.completed == "true" ? scc : courses}">
                                     <tr class="odd gradeX">
                                         <td align="center">CS-${it.number}</td>
                                         <td>${it.name}</td>
                                         <td>${it.semester}</td>
                                         <td align="center">
-                                            <div class="checkbox">
-                                                <label><g:checkBox name="checkbox" value="${it.id}"
-                                                                   checked ="${sc.find {n-> n.id == it.id} ? true : false}"
-                                                                   disabled="${stc.find {n-> n.id == it.id} ? true : false}"/>
-                                                </label>
-                                            </div>
+                                            <g:if test="${params.completed == "true"}">
+                                                Completed
+                                                <span class="glyphicon glyphicon-ok" style="color:green"></span>
+                                            </g:if>
+                                            <g:else>
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <g:checkBox name="checkbox" value="${it.id}"
+                                                                    checked="${(ssc.find { n -> (n == it) } ? true : false) || (scc.find { n -> (n == it) } ? true : false)}"
+                                                                    disabled="${scc.find { n -> (n == it) } ? true : false}"
+                                                                    data-toggle="tooltip" data-placement="left"
+                                                                    title="${scc.find { n -> (n == it) } ? "You have already taken this class" : "Select"}"/>
+                                                    </label>
+                                                </div>
+                                            </g:else>
                                         </td>
                                     </tr>
                                 </g:each>
@@ -383,10 +388,10 @@
                     </div>
 
                     <div class="col-lg-12" align="right">
-
-                        <g:actionSubmit class="btn btn-success btn-lg" value="Submit" />
-                        <g:actionSubmit class="btn btn-danger btn-lg" value="Clear" action="clear"/>
-
+                        <g:if test="${params.completed != "true"}">
+                            <g:actionSubmit class="btn btn-success btn-lg" value="Submit"/>
+                            <g:actionSubmit class="btn btn-danger btn-lg" value="Clear" action="clear"/>
+                        </g:if>
                         <br>
                         <br>
                     </div>
@@ -414,6 +419,14 @@
 
 <!-- Custom Theme JavaScript -->
 <script src="${request.contextPath}/dist/js/sb-admin-2.js"></script>
+
+<script>
+    // tooltip demo
+    $('.tooltip-demo').tooltip({
+        selector: "[data-toggle=tooltip]",
+        container: "body"
+    })
+</script>
 
 </body>
 </html>
