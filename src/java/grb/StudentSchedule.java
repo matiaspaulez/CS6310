@@ -287,7 +287,7 @@ public class StudentSchedule
                         //System.out.printf("Student %d takes Course %d during Semester %d\n", id, i, 1);
                         //results += "course: " + (i + 1) + ", semester: " + Semester.get(k + 1);
                         Semester sem = (Semester)Semester.get(k+1);
-                        results.put(sem.getId(), (i+1));
+                        results.put(sem.getId(), i);
                     }
                 } catch (GRBException e) {
                     e.printStackTrace();
