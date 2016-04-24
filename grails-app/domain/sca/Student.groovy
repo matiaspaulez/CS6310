@@ -6,7 +6,7 @@ class Student{
     int id
     User user
 
-    static hasMany = [selectedCourses: Course]
+    static hasMany = [selectedCourses: Course, completedCourses: Course]
 
     def Student(user){
         this.user = user

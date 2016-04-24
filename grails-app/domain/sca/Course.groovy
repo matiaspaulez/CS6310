@@ -6,6 +6,7 @@ class Course {
     String semester
     String name
     String number
+    boolean completed
 
     def Course(id, name, number, semester){
         this.id = id

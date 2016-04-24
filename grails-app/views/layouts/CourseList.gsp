@@ -370,7 +370,8 @@
                                         <td align="center">
                                             <div class="checkbox">
                                                 <label><g:checkBox name="checkbox" value="${it.id}"
-                                                                   checked ="${sc.find {n-> n.id == it.id} ? true : false}"/>
+                                                                   checked ="${sc.find {n-> n.id == it.id} ? true : false}"
+                                                                   disabled="${stc.find {n-> n.id == it.id} ? true : false}"/>
                                                 </label>
                                             </div>
                                         </td>
