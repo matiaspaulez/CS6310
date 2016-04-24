@@ -42,7 +42,7 @@ public final class KTS
     public static boolean hasValue(final int[] array, ScheduledCourse sc)
     {
         //add plus one to match correctly
-        final int key = sc.getCourse().getId() + 1;
+        final int key = sc.getCourse().getId();
         for (final int i : array)
         {
             if (i == key)
